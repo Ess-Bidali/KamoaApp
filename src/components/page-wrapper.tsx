@@ -1,8 +1,24 @@
 import React from 'react';
-import {useColorScheme, SafeAreaView, StatusBar} from 'react-native';
+import {
+  useColorScheme,
+  SafeAreaView,
+  StatusBar,
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {GlobalColors} from '../../styles';
 
-function PageWrapper(props: any): React.JSX.Element {
+function PageWrapper({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.JSX.Element;
+}): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -15,9 +31,55 @@ function PageWrapper(props: any): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      {props.children}
+      <ScrollView style={styles.pageContainer}>
+        {/* Logo Section */}
+        <View style={styles.logoContainer}>
+          <Image
+            style={styles.logo}
+            source={{
+              uri: 'https://reactnative.dev/img/tiny_logo.png',
+            }}
+          />
+        </View>
+
+        {/* Page Title */}
+        <View>
+          <Text style={styles.pageTitle}>{title}</Text>
+        </View>
+
+        {/* Page Content */}
+        {children}
+      </ScrollView>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  pageContainer: {
+    backgroundColor: GlobalColors.pageBackground,
+    minHeight: '100%',
+    fontFamily: 'Barlow',
+    padding: 20,
+  },
+
+  pageTitle: {
+    color: GlobalColors.headerColor,
+    fontSize: 28,
+    fontWeight: '600',
+    textAlign: 'center',
+    lineHeight: 42,
+  },
+
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+
+  logo: {
+    alignContent: 'center',
+    width: 119,
+    height: 40,
+  },
+});
 
 export default PageWrapper;
