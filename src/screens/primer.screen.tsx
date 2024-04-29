@@ -5,6 +5,7 @@ import {DetailInfo} from '../models/detail-info.interface';
 import InfoItemsList from '../components/info-section/info-items-list';
 import ClassicButton from '../components/buttons/classic-button';
 import TextButton from '../components/buttons/text-button';
+import AppProgressBar from '../components/progress-bar/progress-bar';
 
 function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
   const title = 'Upload a 6 month M-Pesa Statement';
@@ -27,6 +28,9 @@ function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
     },
   ];
 
+  const progressTitle = 'Step 1/3';
+  const progressFraction = 1 / 3;
+
   return (
     <PageWrapper title={title}>
       <View>
@@ -44,6 +48,9 @@ function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
         <InfoItemsList details={details} />
 
         {/* Progress Bar */}
+        <View style={styles.progressSection}>
+          <AppProgressBar title={progressTitle} progress={progressFraction} />
+        </View>
 
         {/* Next Step Btn */}
         <ClassicButton
@@ -73,9 +80,15 @@ const styles = StyleSheet.create({
     width: 200,
   },
 
+  progressSection: {
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 5,
+  },
+
   textBtnContainer: {
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 15,
   },
 });
 
