@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '600',
     textAlign: 'center',
-    lineHeight: 42,
   },
 
   logoContainer: {
