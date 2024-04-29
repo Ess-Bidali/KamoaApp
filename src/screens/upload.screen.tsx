@@ -7,7 +7,7 @@ import AppProgressBar from '../components/progress-bar/progress-bar';
 import UploadSection from '../components/statement-upload/upload-section';
 
 function UploadScreen({navigation}: {navigation: any}): React.JSX.Element {
-  const title = 'How to upload your M-Pesa Statment';
+  const title = 'How to upload your M-Pesa Statement';
 
   const progressTitle = 'Step 2/3';
   const progressFraction = 2 / 3;
