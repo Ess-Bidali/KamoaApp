@@ -1,9 +1,27 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {GlobalColors, GlobalFontSizes} from '../../../styles';
+import DocumentPicker from 'react-native-document-picker';
+import UploadButton from '../buttons/upload-button';
 
 function StatementUploadForm(): React.JSX.Element {
   const [code, setCode] = useState('');
+
+  const uploadFileOnPressHandler = async () => {
+    try {
+      const pickedFile = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.pdf],
+      });
+      console.log('pickedFile', pickedFile);
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        console.log(err);
+      } else {
+        console.log(err);
+        throw err;
+      }
+    }
+  };
 
   return (
     <View style={styles.formContainer}>
@@ -20,8 +38,18 @@ function StatementUploadForm(): React.JSX.Element {
           </View>
           <Text style={styles.uploadInputText}>Upload M-pesa Statement</Text>
           <Text style={styles.uploadInputDesc}>
-            select the M-pesa statement from your phone
+            Select the M-pesa statement from your phone
           </Text>
+
+          {/* Upload Button */}
+          <View style={styles.uploadBtnContainer}>
+            <UploadButton
+              title={'Select'}
+              onPress={async () => {
+                uploadFileOnPressHandler();
+              }}
+            />
+          </View>
         </View>
       </View>
 
@@ -77,6 +105,12 @@ const styles = StyleSheet.create({
   vectorImg: {
     height: 30,
     width: 30,
+    marginBottom: 10,
+  },
+
+  uploadBtnContainer: {
+    alignItems: 'center',
+    marginTop: 10,
   },
 
   codeSegment: {
