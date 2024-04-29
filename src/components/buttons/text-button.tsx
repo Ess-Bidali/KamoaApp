@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
-import {GlobalColors} from '../../../styles';
+import {GlobalColors, GlobalFontSizes} from '../../../styles';
 
 function TextButton({
   title,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     marginBottom: -1,
-    fontSize: 12,
+    fontSize: GlobalFontSizes.small,
     fontWeight: '500',
     color: GlobalColors.headerColor,
   },

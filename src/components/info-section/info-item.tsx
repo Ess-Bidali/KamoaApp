@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {GlobalColors} from '../../../styles';
+import {GlobalColors, GlobalFontSizes} from '../../../styles';
 
 function InfoItem({
   title,
@@ -27,13 +27,13 @@ function InfoItem({
 const styles = StyleSheet.create({
   infoTitle: {
     color: GlobalColors.headerColor,
-    fontSize: 16,
+    fontSize: GlobalFontSizes.subheading,
     fontWeight: '700',
     marginBottom: 5,
   },
 
   infoDescription: {
-    fontSize: 12,
+    fontSize: GlobalFontSizes.small,
   },
 });
 
