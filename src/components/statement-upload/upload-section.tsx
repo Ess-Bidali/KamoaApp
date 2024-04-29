@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import UploadSteps from '../upload-steps/upload-steps';
+import UploadSteps from './upload-steps';
 import StatementUploadForm from './upload-form';
 import {GlobalColors} from '../../../styles';
 
