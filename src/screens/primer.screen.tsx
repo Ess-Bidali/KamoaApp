@@ -62,7 +62,7 @@ function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
         <View style={styles.textBtnContainer}>
           <TextButton
             title="Back to Login"
-            onPress={() => navigation.navigate('UploadScreen')}
+            onPress={() => navigation.navigate('LoginScreen')}
           />
         </View>
       </View>
