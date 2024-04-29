@@ -48,7 +48,7 @@ function PageWrapper({
         </View>
 
         {/* Page Content */}
-        {children}
+        <View style={styles.pageContent}>{children}</View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -78,6 +78,10 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     width: 119,
     height: 40,
+  },
+
+  pageContent: {
+    paddingVertical: 20,
   },
 });
 
