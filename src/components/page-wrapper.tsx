@@ -10,7 +10,7 @@ import {
   Image,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {GlobalColors} from '../../styles';
+import {GlobalColors, GlobalFontSizes} from '../../styles';
 
 function PageWrapper({
   title,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 
   pageTitle: {
     color: GlobalColors.headerColor,
-    fontSize: 28,
+    fontSize: GlobalFontSizes.heading,
     fontWeight: '600',
     textAlign: 'center',
   },
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
 
   pageContent: {
     paddingVertical: 20,
+    marginBottom: 30,
   },
 });
 
