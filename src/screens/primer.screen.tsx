@@ -1,10 +1,11 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import PageWrapper from '../components/page-wrapper';
 import {DetailInfo} from '../models/detail-info.interface';
 import InfoItemsList from '../components/info-section/info-items-list';
+import ClassicButton from '../components/buttons/classic-button';
 
-function PrimerScreen(): React.JSX.Element {
+function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
   const title = 'Upload a 6 month M-Pesa Statement';
 
   const details: DetailInfo[] = [
@@ -29,11 +30,14 @@ function PrimerScreen(): React.JSX.Element {
     <PageWrapper title={title}>
       <View>
         {/* Image */}
-        <Image
-          source={{
-            uri: 'https://reactnative.dev/img/tiny_logo.png',
-          }}
-        />
+        <View style={styles.vectorImgContainer}>
+          <Image
+            style={styles.vectorImg}
+            source={{
+              uri: 'https://reactnative.dev/img/tiny_logo.png',
+            }}
+          />
+        </View>
 
         {/* Info Items List */}
         <InfoItemsList details={details} />
@@ -41,11 +45,26 @@ function PrimerScreen(): React.JSX.Element {
         {/* Progress Bar */}
 
         {/* Next Step Btn */}
+        <ClassicButton
+          title="Next"
+          onPress={() => navigation.navigate('UploadScreen')}
+        />
 
         {/* Text Btn */}
       </View>
     </PageWrapper>
   );
 }
+
+const styles = StyleSheet.create({
+  vectorImgContainer: {
+    alignItems: 'center',
+  },
+
+  vectorImg: {
+    height: 150,
+    width: 200,
+  },
+});
 
 export default PrimerScreen;
