@@ -5,6 +5,8 @@ export const GlobalColors = {
   headerColor: '#000000',
   lightgray: '#d3d3d3',
   primary: '#ECB64D',
+  secondary: '#5EB784',
+  transparent: '#ffffff00',
 };
 
 export const globalStyles = StyleSheet.create({
