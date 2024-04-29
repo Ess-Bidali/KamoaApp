@@ -19,6 +19,7 @@ export const GlobalColors = {
 
 export const GlobalFontSizes = {
   small: 12,
+  smallMedium: 14,
   medium: 16,
   mediumLarge: 20,
   large: 28,

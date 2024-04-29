@@ -13,7 +13,7 @@ function UploadStep({step}: {step: string}): React.JSX.Element {
 
 function UploadSteps({steps}: {steps: string[]}): React.JSX.Element {
   return (
-    <View>
+    <View style={styles.stepsContainer}>
       {steps.map(step => (
         <UploadStep key={step} step={step} />
       ))}
@@ -22,17 +22,22 @@ function UploadSteps({steps}: {steps: string[]}): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
+  stepsContainer: {
+    display: 'flex',
+    paddingLeft: 6,
+    paddingRight: 4,
+  },
+
   uploadStep: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 8,
     paddingVertical: 3,
-    paddingLeft: 8,
   },
 
   uploadStepText: {
-    fontSize: GlobalFontSizes.subheading,
+    fontSize: GlobalFontSizes.smallMedium,
   },
 });
 
