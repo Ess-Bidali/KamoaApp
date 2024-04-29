@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import PrimerScreen from './src/screens/primer.screen';
 import PermissionsScreen from './src/screens/permissions.screen';
 import UploadScreen from './src/screens/upload.screen';
+import OnboardingResultScreen from './src/screens/onboarding-result.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,10 @@ function App(): React.JSX.Element {
         <Stack.Screen name="UploadScreen" component={UploadScreen} />
         <Stack.Screen name="PermissionsScreen" component={PermissionsScreen} />
         <Stack.Screen name="LoginScreen" component={PrimerScreen} />
+        <Stack.Screen
+          name="OnboardingResultScreen"
+          component={OnboardingResultScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

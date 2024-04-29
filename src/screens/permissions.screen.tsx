@@ -1,11 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, Linking, StyleSheet, View} from 'react-native';
 import PageWrapper from '../components/page-wrapper';
 import {DetailInfo} from '../models/detail-info.interface';
 import InfoItemsList from '../components/info-section/info-items-list';
 import ClassicButton from '../components/buttons/classic-button';
 import TextButton from '../components/buttons/text-button';
 import AppProgressBar from '../components/progress-bar/progress-bar';
+import {OnboardingResult} from '../models/onboarding-result.enum';
 
 function PermissionsScreen({navigation}: {navigation: any}): React.JSX.Element {
   const title = 'Accept Permissions';
@@ -28,6 +29,8 @@ function PermissionsScreen({navigation}: {navigation: any}): React.JSX.Element {
     },
   ];
 
+  const playStoreUrl = 'https://play.google.com';
+
   const progressTitle = 'Step 3/3';
   const progressFraction = 3 / 3;
 
@@ -47,10 +50,11 @@ function PermissionsScreen({navigation}: {navigation: any}): React.JSX.Element {
         {/* Info Items List */}
         <InfoItemsList details={details} />
 
+        {/* Play Store Link */}
         <View style={styles.moreDetailsSection}>
           <TextButton
             title="Get more info from Google Play"
-            onPress={() => navigation.navigate('UploadScreen')}
+            onPress={() => Linking.openURL(playStoreUrl)}
           />
         </View>
 
@@ -62,14 +66,22 @@ function PermissionsScreen({navigation}: {navigation: any}): React.JSX.Element {
         {/* Next Step Btn */}
         <ClassicButton
           title="Accept & Continue"
-          onPress={() => navigation.navigate('UploadScreen')}
+          onPress={() =>
+            navigation.navigate('OnboardingResultScreen', {
+              result: OnboardingResult.Success,
+            })
+          }
         />
 
         {/* Text Btn */}
         <View style={styles.textBtnContainer}>
           <TextButton
-            title="Back to Login"
-            onPress={() => navigation.navigate('LoginScreen')}
+            title="Deny Access"
+            onPress={() =>
+              navigation.navigate('OnboardingResultScreen', {
+                result: OnboardingResult.Fail,
+              })
+            }
           />
         </View>
       </View>
