@@ -4,15 +4,20 @@ import {GlobalColors} from '../../../styles';
 
 function ClassicButton({
   title,
+  disabled,
   onPress,
   alternateColor,
 }: {
   title: string;
+  disabled?: boolean;
   alternateColor?: boolean;
   onPress: () => any;
 }): React.JSX.Element {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.classicButtonContainer}>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={styles.classicButtonContainer}>
       <Text
         style={
           alternateColor

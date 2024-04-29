@@ -4,13 +4,18 @@ import {GlobalColors, GlobalFontSizes} from '../../../styles';
 
 function TextButton({
   title,
+  disabled,
   onPress,
 }: {
   title: string;
+  disabled?: boolean;
   onPress: () => any;
 }): React.JSX.Element {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={styles.buttonContainer}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
