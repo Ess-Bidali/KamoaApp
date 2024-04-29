@@ -4,6 +4,7 @@ import PageWrapper from '../components/page-wrapper';
 import {DetailInfo} from '../models/detail-info.interface';
 import InfoItemsList from '../components/info-section/info-items-list';
 import ClassicButton from '../components/buttons/classic-button';
+import TextButton from '../components/buttons/text-button';
 
 function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
   const title = 'Upload a 6 month M-Pesa Statement';
@@ -51,6 +52,12 @@ function PrimerScreen({navigation}: {navigation: any}): React.JSX.Element {
         />
 
         {/* Text Btn */}
+        <View style={styles.textBtnContainer}>
+          <TextButton
+            title="Back to Login"
+            onPress={() => navigation.navigate('UploadScreen')}
+          />
+        </View>
       </View>
     </PageWrapper>
   );
@@ -64,6 +71,11 @@ const styles = StyleSheet.create({
   vectorImg: {
     height: 150,
     width: 200,
+  },
+
+  textBtnContainer: {
+    alignItems: 'center',
+    marginTop: 20,
   },
 });
 
