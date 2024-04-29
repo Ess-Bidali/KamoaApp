@@ -5,13 +5,22 @@ import {GlobalColors} from '../../../styles';
 function ClassicButton({
   title,
   onPress,
+  alternateColor,
 }: {
   title: string;
+  alternateColor?: boolean;
   onPress: () => any;
 }): React.JSX.Element {
   return (
     <TouchableOpacity onPress={onPress} style={styles.classicButtonContainer}>
-      <Text style={styles.classicButtonText}>{title}</Text>
+      <Text
+        style={
+          alternateColor
+            ? styles.classicButtonTextWhite
+            : styles.classicButtonText
+        }>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -31,6 +40,14 @@ const styles = StyleSheet.create({
     color: GlobalColors.headerColor,
     alignSelf: 'center',
     textTransform: 'uppercase',
+  },
+
+  classicButtonTextWhite: {
+    fontSize: 15,
+    fontWeight: '700',
+    alignSelf: 'center',
+    textTransform: 'uppercase',
+    color: GlobalColors.white,
   },
 });
 
