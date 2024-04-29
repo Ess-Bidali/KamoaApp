@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {GlobalColors, GlobalFontSizes} from '../../../styles';
-import DocumentPicker from 'react-native-document-picker';
+import DocumentPicker, {
+  DocumentPickerResponse,
+} from 'react-native-document-picker';
 import UploadButton from '../buttons/upload-button';
+import TextButton from '../buttons/text-button';
 
 function StatementUploadForm(): React.JSX.Element {
   const [code, setCode] = useState('');
+  const [uploadedFile, setUploadedFile] = useState<DocumentPickerResponse>();
 
   const uploadFileOnPressHandler = async () => {
     try {
       const pickedFile = await DocumentPicker.pickSingle({
         type: [DocumentPicker.types.pdf],
       });
-      console.log('pickedFile', pickedFile);
+      setUploadedFile(pickedFile);
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         console.log(err);
@@ -23,34 +27,53 @@ function StatementUploadForm(): React.JSX.Element {
     }
   };
 
+  const updateCodeValue = (text: string) => {
+    setCode(text);
+  };
+
   return (
     <View style={styles.formContainer}>
       <View style={styles.uploadInput}>
-        <View>
-          {/* Image */}
-          <View style={styles.vectorImgContainer}>
-            <Image
-              style={styles.vectorImg}
-              source={{
-                uri: 'https://reactnative.dev/img/tiny_logo.png',
-              }}
-            />
-          </View>
-          <Text style={styles.uploadInputText}>Upload M-pesa Statement</Text>
-          <Text style={styles.uploadInputDesc}>
-            Select the M-pesa statement from your phone
-          </Text>
+        {!uploadedFile && (
+          <View>
+            {/* Image */}
+            <View style={styles.vectorImgContainer}>
+              <Image
+                style={styles.vectorImg}
+                source={{
+                  uri: 'https://reactnative.dev/img/tiny_logo.png',
+                }}
+              />
+            </View>
+            <Text style={styles.uploadInputText}>Upload M-pesa Statement</Text>
+            <Text style={styles.uploadInputDesc}>
+              Select the M-pesa statement from your phone
+            </Text>
 
-          {/* Upload Button */}
-          <View style={styles.uploadBtnContainer}>
-            <UploadButton
-              title={'Select'}
-              onPress={async () => {
-                uploadFileOnPressHandler();
-              }}
-            />
+            {/* Upload Button */}
+            <View style={styles.uploadBtnContainer}>
+              <UploadButton
+                title={'Select'}
+                onPress={async () => {
+                  uploadFileOnPressHandler();
+                }}
+              />
+            </View>
           </View>
-        </View>
+        )}
+
+        {uploadedFile && (
+          <View>
+            <Text style={styles.uploadedFileTitle}>Uploaded file:</Text>
+            <View style={styles.uploadedFile}>
+              <Text>{uploadedFile?.name}</Text>
+              <TextButton
+                title="Reset"
+                onPress={() => setUploadedFile(null as any)}
+              />
+            </View>
+          </View>
+        )}
       </View>
 
       <View style={styles.codeSegment}>
@@ -62,7 +85,7 @@ function StatementUploadForm(): React.JSX.Element {
           placeholder="243456"
           placeholderTextColor={GlobalColors.borderColor}
           value={code}
-          onChangeText={setCode}
+          onChangeText={updateCodeValue}
         />
 
         <View style={styles.codeInputBorder} />
@@ -111,6 +134,16 @@ const styles = StyleSheet.create({
   uploadBtnContainer: {
     alignItems: 'center',
     marginTop: 10,
+  },
+
+  uploadedFileTitle: {
+    textAlign: 'center',
+  },
+
+  uploadedFile: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
   },
 
   codeSegment: {
