@@ -17,7 +17,7 @@ function ClassicButton({
     <TouchableOpacity
       disabled={disabled}
       onPress={onPress}
-      style={styles.classicButtonContainer}>
+      style={disabled ? styles.disabledBtn : styles.classicButtonContainer}>
       <Text
         style={
           alternateColor
@@ -37,6 +37,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 12,
+  },
+
+  disabledBtn: {
+    elevation: 1,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: GlobalColors.lightgray,
   },
 
   classicButtonText: {
