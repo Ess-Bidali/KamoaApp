@@ -1,8 +1,7 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Getting Started with the Kamoa App
 
-# Getting Started
-
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Welcome to Kamoa App. This is a simple demonstration of the basic onboarding flow for the application.
+The pending tasks are described at the bottom.
 
 ## Step 1: Start the Metro Server
 
@@ -42,7 +41,7 @@ npm run ios
 yarn ios
 ```
 
-# Additional Project Information
+# Project Information
 
 This project contains a basic onboarding screen as per [the prescribed design](https://www.figma.com/file/ww9S4JLGqXRJzW3LuGItNx/M-Pesa-upload---TEST-task?type=design&node-id=0-1&mode=design&t=gTixxZEPpj1hZeTw-0)
 
@@ -53,3 +52,8 @@ Some pending tasks:
 2. Images.
 - Currently, a React Logo is used in place of the actual images in the design.
 - The intention was to get the structure, then plug those in eventually.
+
+3. Font
+- The application currently uses the default React Native Font.
+- The Barlow Font has been downloaded. The aim here was to set this as the default font once the other design aspects were completed
+
